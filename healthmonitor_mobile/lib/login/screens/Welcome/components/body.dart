@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:healthmonitor_mobile/login/components/rounded_button.dart';
 import 'package:healthmonitor_mobile/login/screens/Login/login_screen.dart';
 import 'package:healthmonitor_mobile/login/screens/Signup/signup_screen.dart';
