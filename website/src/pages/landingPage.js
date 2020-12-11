@@ -1,61 +1,53 @@
-import React from 'react'
-import Row from 'react-bootstrap/Row'
-import Container from 'react-bootstrap/Container'
-import Col from 'react-bootstrap/Col'
-import Button from 'react-bootstrap/Button'
-import Image from 'react-bootstrap/Image'
-import heartvitals from '../assets/images/heartvitals.jpeg'
-import Jumbotron from 'react-bootstrap/Jumbotron'
+import React from 'react';
+import Container from 'react-bootstrap/Container';
+import Jumbotron from 'react-bootstrap/Jumbotron';
+import { BGPURPLE } from '../constants';
+import Card from 'react-bootstrap/Card';
+import CardDeck from 'react-bootstrap/CardDeck';
 
 
 function LandingPage() {
     return (
         <div>
-            <Jumbotron fluid className="bg-black text-white text-center">
+            <Jumbotron fluid className="text-white text-center" style={BGPURPLE}>
                 <Container>
-                    <h1>RemoTest</h1>
-                    <h5>
-                        Testing done anywhere.
-    </h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                 </Container>
             </Jumbotron>
             <Container>
-                <Row className="d-flex justify-content-md-center p-4">
-                    <Col xs="12" md="6">
-                        <Image src={heartvitals} fluid />
-                    </Col>
-                    <Col xs="12" md="6">
-                        <h1 className="text-dark">Calculate Heart Rate</h1>
-                        <p >Folly words widow one downs few age every seven. If miss part by fact he park just shew. Discovered had get considered projection who favourable. Necessary up knowledge it tolerably. Unwilling departure education is be dashwoods or an. Use off agreeable law unwilling sir deficient curiosity instantly. Easy mind life fact with see has bore ten. Parish any chatty can elinor direct for former. Up as meant widow equal an share least. </p>
-                        <Row className="d-flex justify-content-xs-center">
-                            <Button variant="dark" size="lg" className="d-flex justify-content-xs-center ml-3">Start Test</Button>{' '}
-                        </Row>
-                    </Col>
-                </Row>
-                <Row className="justify-content-xs-center p-4">
-                    <Col xs="12" md="6">
-                        <h1 className="text-dark"> Respiratory Rate </h1>
-                        <p> Folly words widow one downs few age every seven. If miss part by fact he park just shew. Discovered had get considered projection who favourable. Necessary up knowledge it tolerably. Unwilling departure education is be dashwoods or an. Use off agreeable law unwilling sir deficient curiosity instantly. Easy mind life fact with see has bore ten. Parish any chatty can elinor direct for former. Up as meant widow equal an share least. </p>
-                        <Row className="d-flex justify-content-xs-center">
-                            <Button variant="dark" size="lg" className="d-flex justify-content-xs-center ml-3">Start Test</Button>{' '}
-                        </Row>
-                    </Col>
-                    <Col xs="12" md="6">
-                        <Image src={heartvitals} fluid />
-                    </Col>
-                </Row>
-                <Row className="justify-content-xs-center p-4 mb-2">
-                    <Col xs="12" md="6">
-                        <Image src={heartvitals} fluid />
-                    </Col>
-                    <Col xs="12" md="6">
-                        <h1 className="text-dark"> SpO2 Rate </h1>
-                        <p> Folly words widow one downs few age every seven. If miss part by fact he park just shew. Discovered had get considered projection who favourable. Necessary up knowledge it tolerably. Unwilling departure education is be dashwoods or an. Use off agreeable law unwilling sir deficient curiosity instantly. Easy mind life fact with see has bore ten. Parish any chatty can elinor direct for former. Up as meant widow equal an share least. </p>
-                        <Row className="d-flex justify-content-xs-center">
-                            <Button variant="dark" size="lg" className="d-flex justify-content-xs-center ml-3">Start Test</Button>{' '}
-                        </Row>
-                    </Col>
-                </Row>
+                <CardDeck className="mb-4">
+                    <Card>
+                        <Card.Img variant="top" src="https://images.unsplash.com/photo-1607633111829-bab3a0cd7cc8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1234&q=80" />
+                        <Card.Body>
+                            <Card.Title>Card title</Card.Title>
+                            <Card.Text>
+                                This is a wider card with supporting text below as a natural lead-in to
+                                additional content. This content is a little bit longer.
+      </Card.Text>
+                        </Card.Body>
+                    </Card>
+                    <Card>
+                        <Card.Img variant="top" src="https://images.unsplash.com/photo-1607633111829-bab3a0cd7cc8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1234&q=80" />
+                        <Card.Body>
+                            <Card.Title>Card title</Card.Title>
+                            <Card.Text>
+                                This card has supporting text below as a natural lead-in to additional
+        content.{' '}
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                    <Card>
+                        <Card.Img variant="top" src="https://images.unsplash.com/photo-1607633111829-bab3a0cd7cc8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1234&q=80" />
+                        <Card.Body>
+                            <Card.Title>Card title</Card.Title>
+                            <Card.Text>
+                                This is a wider card with supporting text below as a natural lead-in to
+                                additional content. This card has even longer content than the first to
+                                show that equal height action.
+      </Card.Text>
+                        </Card.Body>
+                    </Card>
+                </CardDeck>
             </Container>
         </div>
     )
