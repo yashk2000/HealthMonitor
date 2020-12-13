@@ -5,61 +5,90 @@ import { BGPURPLE } from '../constants';
 import { Camera } from 'react-cam';
 import { SECONDARYPURPLE } from '../constants';
 import { CameraFill } from 'react-bootstrap-icons';
-const axios = require('axios');
+import axios from 'axios'
+import Webcam from "react-webcam";
+// const axios = require('axios');
 let ans = '';
 let anythingElse;
 
 
-function capture(imgSrc) {
-    console.log('Image captured!');
-    imgSrc = imgSrc.replace('data:image/jpeg;base64,', '')
-    console.log(imgSrc)
-    for (let i = 0; i < 2; i++) {
-        imgSrc += `;${imgSrc}`
-    }
-    let data = JSON.stringify({ frames: imgSrc });
-    axios.post(`https://cors-anywhere.herokuapp.com/https://health-monitor-mlh.herokuapp.com/hr`, data, { headers: { "Content-Type": "application/json" } })
-        .then(response => {
-            if (typeof (response.data[0]) === Number) {
-                anythingElse = toString(response.data).split(" ")
-                ans = `heart rate = ${anythingElse[0]} respiratory rate = ${anythingElse[1]}`
-            } else {
-                ans = 'Face not found!'
-            }
-            console.log('the ans is', ans)
-        })
-        .catch(error => {
-            console.log(error);
-        });;
-}
-
-
-
+// function capture(imgSrc) {
+//     console.log('Image captured!');
+//     imgSrc = imgSrc.replace('data:image/jpeg;base64,', '')
+//     console.log(imgSrc)
+//     for (let i = 0; i < 2; i++) {
+//         imgSrc += `;${imgSrc}`
+//     }
+//     let data = JSON.stringify({ frames: imgSrc });
+//     axios.post(`https://cors-anywhere.herokuapp.com/https://health-monitor-mlh.herokuapp.com/hr`, data, { headers: { "Content-Type": "application/json" } })
+//         .then(response => {
+//             if (typeof (response.data[0]) === Number) {
+//                 anythingElse = toString(response.data).split(" ")
+//                 ans = `heart rate = ${anythingElse[0]} respiratory rate = ${anythingElse[1]}`
+//             } else {
+//                 ans = 'Face not found!'
+//             }
+//             console.log('the ans is', ans)
+//         })
+//         .catch(error => {
+//             console.log(error);
+//         });;
+// }
+const videoConstraints = {
+    width: 1280,
+    height: 720,
+    facingMode: "user"
+  };
+   
 function RespiratoryInstructions() {
-    const cam = useRef(null);
+    const webcamRef = React.useRef(null);
+   
+    const capture = React.useCallback(
+      () => {
+        let imgSrc = webcamRef.current.getScreenshot();
+        imgSrc = imgSrc.replace('data:image/jpeg;base64,', '')
+        
+        //console.log(imgSrc)
+        for(let i=0; i<2; i++){
+            imgSrc += `;${imgSrc}`
+        }
+        let data = JSON.stringify({ frames: imgSrc });
+        axios.post(`https://cors-anywhere.herokuapp.com/https://health-monitor-mlh.herokuapp.com/hr`, data, { headers: { "Content-Type": "application/json" } })
+            .then(response => {
+                console.log(response.data)
+                if (response.data[0] === 'F') {
+                    ans = 'Oops! It seems that the face was not recognized!'
+                } else {
+                    anythingElse = (response.data).split(" ")
+                    console.log(anythingElse)
+                    ans = `The heart rate is ${anythingElse[0]} and the respiratory rate is ${anythingElse[1]}`
+                }
+                console.log('the ans is', ans)
+                alert(ans)
+            })
+            .catch(error => {
+                console.log(error);
+            });;
+      },
+      [webcamRef]
+    );
     return (
         <div>
             <div style={BGPURPLE}>
                 <Container className="p-5" >
                     <Col>
                         <Fragment>
-                            <Camera
-                                showFocus={false}
-                                front={false}
-                                capture={capture}
-                                ref={cam}
-                                width="80%"
-                                height="auto"
-                                focusWidth="80%"
-                                focusHeight="60%"
-                                btnColor="white"
+                            <Webcam
+                                audio={false}
+                                height={640}
+                                ref={webcamRef}
+                                screenshotFormat="image/jpeg"
+                                width={860}
+                                videoConstraints={videoConstraints}
                             />
-                            {/* <button onClick={img => cam.current.capture(img)}>Take image</button> */}
                         </Fragment>
                         <div className="d-flex justify-content-center mt-5">
-                            <Button style={{ backgroundColor: SECONDARYPURPLE }} size="lg" active className="rounded" onClick={img => cam.current.capture(img)}>
-                                <CameraFill /> Capture Image
-            </Button>
+                            <Button style={{ backgroundColor: SECONDARYPURPLE }} size="lg" active className="rounded" onClick={capture}>Capture photo</Button>
                         </div>
                     </Col>
                 </Container>
@@ -74,6 +103,7 @@ function RespiratoryInstructions() {
 2. Make sure the face is well lit. <br />
 3. Once you are ready, hit on the Measure button and wait for the camera to capture your image. While this process is happening, please stay as still as you can.  <br />
 4. After capturing the image please wait for about 15-20 seconds for an alert message before hitting the Next button.  <br />
+
                     </Card.Text>
                 </Card.Body>
             </Card>
