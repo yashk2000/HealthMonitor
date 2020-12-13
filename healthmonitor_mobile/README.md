@@ -1,6 +1,6 @@
 # healthmonitor_mobile
 
-A new Flutter application.
+The mobile app for the health monitor project. 
 
 ## Getting Started
 
