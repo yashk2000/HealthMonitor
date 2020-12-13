@@ -1,7 +1,7 @@
 ![HealthMonitor](https://socialify.git.ci/yashk2000/HealthMonitor/image?description=1&descriptionEditable=Remote%20testing%20made%20easy&font=Raleway&forks=1&language=1&pattern=Charlie%20Brown&stargazers=1&theme=Light)
 
 # Health Monitor
-An app build to allow people to carry out prelimnary tests at the comfort of their homes using their mobile/laptop.
+An app build to allow people to carry out preliminary health assessments at the comfort of their homes using their mobile/laptop.
 
 ## 👨‍🏭  Who are we?
 This project was built by [Rachit Gupta](https://github.com/dotrachit), [Sakshi Rambhia](https://github.com/Sakshi16), [Rohan Rout](https://github.com/routrohan) and [Yash Khare](https://github.com/yashk2000).
