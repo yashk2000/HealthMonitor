@@ -1,39 +1,13 @@
-import React, { Fragment, useRef } from 'react';
+import React, { Fragment } from 'react';
 import Button from 'react-bootstrap/Button';
 import { Col, Card, Container } from 'react-bootstrap';
 import { BGPURPLE } from '../constants';
-import { Camera } from 'react-cam';
 import { SECONDARYPURPLE } from '../constants';
-import { CameraFill } from 'react-bootstrap-icons';
 import axios from 'axios'
 import Webcam from "react-webcam";
-// const axios = require('axios');
 let ans = '';
 let anythingElse;
 
-
-// function capture(imgSrc) {
-//     console.log('Image captured!');
-//     imgSrc = imgSrc.replace('data:image/jpeg;base64,', '')
-//     console.log(imgSrc)
-//     for (let i = 0; i < 2; i++) {
-//         imgSrc += `;${imgSrc}`
-//     }
-//     let data = JSON.stringify({ frames: imgSrc });
-//     axios.post(`https://cors-anywhere.herokuapp.com/https://health-monitor-mlh.herokuapp.com/hr`, data, { headers: { "Content-Type": "application/json" } })
-//         .then(response => {
-//             if (typeof (response.data[0]) === Number) {
-//                 anythingElse = toString(response.data).split(" ")
-//                 ans = `heart rate = ${anythingElse[0]} respiratory rate = ${anythingElse[1]}`
-//             } else {
-//                 ans = 'Face not found!'
-//             }
-//             console.log('the ans is', ans)
-//         })
-//         .catch(error => {
-//             console.log(error);
-//         });;
-// }
 const videoConstraints = {
     width: 1280,
     height: 720,
