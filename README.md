@@ -55,6 +55,21 @@ Other useful links:
 - For help getting started with Flutter, view the Flutter [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
+## :wrench: The backend
+
+The backend is deployed here: [https://health-monitor-mlh.herokuapp.com/](https://health-monitor-mlh.herokuapp.com/)
+
+The two endpoints: 
+
+- /spo
+- /hr
+
+Both require POST API calls and the json body should contain the base64 strings of the images attached to one after the another separated by a semicolon only
+
+- **/spo** returns the SpO2 value if the images contain fingers pointed at the camera. If not, or if the image isnt that clear it;'ll return "Finger not recognised"
+
+- **/hr** returns both heart rate and respiratory rate separated by a space (ex: (72,18)) the requirement for this is face in the image. If its not visible it'll return "Face no recognised".
+
 ## 📜 License
 This project is released under a free and open-source software license, Apache License 2.0 or later ([LICENSE](LICENSE) or https://www.apache.org/licenses/LICENSE-2.0). The documentation is also released under a free documentation license, namely the [GFDL v1.3](https://www.gnu.org/licenses/fdl-1.3.en.html) license or later.
 
